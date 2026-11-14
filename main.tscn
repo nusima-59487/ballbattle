@@ -34,11 +34,22 @@ shape = SubResource("RectangleShape2D_0xm2m")
 position = Vector2(0, -53)
 shape = SubResource("RectangleShape2D_i1io4")
 
-[node name="VerityBall" parent="." unique_id=292186705 instance=ExtResource("2_h2yge")]
-position = Vector2(-23, 2)
+[node name="VerityBall" parent="." unique_id=292186705 node_paths=PackedStringArray("skill") instance=ExtResource("1_ig7tw")]
+healthComponent = SubResource("Resource_bxe6i")
+speed = 67
+initialAngle = 43589.0
+ballName = "Verity"
+skill = NodePath("GunSkill")
 
-[node name="BijabilliBall" parent="." unique_id=240336343 instance=ExtResource("3_1bvp3")]
-position = Vector2(22, 22)
+[node name="GunSkill" parent="VerityBall" unique_id=563642783 instance=ExtResource("2_0xm2m")]
+
+[node name="VerityBall2" parent="." unique_id=39863513 node_paths=PackedStringArray("skill") instance=ExtResource("1_ig7tw")]
+healthComponent = SubResource("Resource_cy8b5")
+speed = 23
+baseDamage = 25
+skill = NodePath("Contact")
+
+[node name="Contact" parent="VerityBall2" unique_id=2086127598 instance=ExtResource("4_1bvp3")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1244868719]
 zoom = Vector2(4, 4)
