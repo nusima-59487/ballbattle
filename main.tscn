@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cmduosksoq088"]
 
+
 [ext_resource type="Texture2D" uid="uid://dgkq1kwux1mwh" path="res://assets/battle_background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://x3ycjt64tjcq" path="res://scripts/battle.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://na58dyi6njlb" path="res://balls/verity_ball.tscn" id="2_h2yge"]
@@ -53,6 +54,7 @@ offset_right = -1.0
 offset_bottom = 81.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(-11, -10)
+toggle_mode = true
 texture_normal = ExtResource("7_5vw27")
 
 [node name="PlayerSlot2" type="TextureButton" parent="." unique_id=1549977663]
@@ -62,6 +64,7 @@ offset_right = -65.0
 offset_bottom = 34.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(-11, -10)
+toggle_mode = true
 
 [node name="PlayerSlot3" type="TextureButton" parent="." unique_id=1408195750]
 offset_left = -65.0
@@ -70,3 +73,8 @@ offset_right = -65.0
 offset_bottom = 51.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(-11, -10)
+toggle_mode = true
+
+[connection signal="pressed" from="PlayerSlot1" to="." method="_on_player_slot_1_pressed"]
+[connection signal="pressed" from="PlayerSlot2" to="." method="_on_player_slot_2_pressed"]
+[connection signal="pressed" from="PlayerSlot3" to="." method="_on_player_slot_3_pressed"]

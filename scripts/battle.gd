@@ -10,13 +10,24 @@ extends Node2D
 func _ready() -> void:
 	for i in min(GameInstance.player_balls_lineup.size(), 3): 
 		var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
-		print(img)
 		var img_texture = ImageTexture.create_from_image(img)
-		print(img_texture)
+		var img1 = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + "C.png")
+		var img_texture1 = ImageTexture.create_from_image(img1)
+		player_slots[i].texture_hover = img_texture1
 		player_slots[i].texture_normal = img_texture
-		print(player_slots[i].texture_normal)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+
+func _on_player_slot_1_pressed() -> void:
+	player_slot_2.button_pressed = false
+	player_slot_3.button_pressed = false
+func _on_player_slot_2_pressed() -> void:
+	player_slot_1.button_pressed = false
+	player_slot_3.button_pressed = false
+func _on_player_slot_3_pressed() -> void:
+	player_slot_1.button_pressed = false
+	player_slot_2.button_pressed = false
