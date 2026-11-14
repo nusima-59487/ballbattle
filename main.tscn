@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cmduosksoq088"]
 
+[ext_resource type="Texture2D" uid="uid://dgkq1kwux1mwh" path="res://assets/battle_background.png" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bbifnmfg1l65u" path="res://ball.tscn" id="1_ig7tw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1io4"]
@@ -9,6 +10,11 @@ size = Vector2(120, 10)
 size = Vector2(10, 100)
 
 [node name="Node2D" type="Node2D" unique_id=315661774]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1703523905]
+position = Vector2(1, 0)
+scale = Vector2(0.3218243, 0.33301547)
+texture = ExtResource("1_0xm2m")
 
 [node name="BounceAreaBound" type="StaticBody2D" parent="." unique_id=1196473772]
 
@@ -34,4 +40,5 @@ ballName = "Verity"
 [node name="VerityBall2" parent="." unique_id=39863513 instance=ExtResource("1_ig7tw")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1244868719]
+position = Vector2(4, 2)
 zoom = Vector2(4, 4)
