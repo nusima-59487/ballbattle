@@ -1,10 +1,8 @@
 [gd_scene format=3 uid="uid://cmduosksoq088"]
 
 [ext_resource type="Texture2D" uid="uid://dgkq1kwux1mwh" path="res://assets/battle_background.png" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bbifnmfg1l65u" path="res://ball.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://c8h2hfguf0oqy" path="res://skills/gun.tscn" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://bom0pocgkgyic" path="res://scripts/health_sys.gd" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://ckea26xkcx8ud" path="res://skills/contact.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://na58dyi6njlb" path="res://balls/verity_ball.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://donj2i1jrkbhp" path="res://balls/bijabilli_ball.tscn" id="3_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1io4"]
 size = Vector2(120, 10)
@@ -12,55 +10,35 @@ size = Vector2(120, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(10, 100)
 
-[sub_resource type="Resource" id="Resource_bxe6i"]
-script = ExtResource("2_h2yge")
-metadata/_custom_type_script = "uid://bom0pocgkgyic"
-
-[sub_resource type="Resource" id="Resource_cy8b5"]
-script = ExtResource("2_h2yge")
-metadata/_custom_type_script = "uid://bom0pocgkgyic"
-
 [node name="Node2D" type="Node2D" unique_id=315661774]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1703523905]
-position = Vector2(1, 0)
 scale = Vector2(0.3218243, 0.33301547)
 texture = ExtResource("1_0xm2m")
 
 [node name="BounceAreaBound" type="StaticBody2D" parent="." unique_id=1196473772]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceAreaBound" unique_id=139143739]
-position = Vector2(0, 55)
+position = Vector2(0, 53)
 shape = SubResource("RectangleShape2D_i1io4")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BounceAreaBound" unique_id=1713262728]
-position = Vector2(-55, 0)
+position = Vector2(-57, 0)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="BounceAreaBound" unique_id=2062744960]
-position = Vector2(55, 0)
+position = Vector2(57, 0)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="BounceAreaBound" unique_id=1998441272]
-position = Vector2(0, -55)
+position = Vector2(0, -53)
 shape = SubResource("RectangleShape2D_i1io4")
 
-[node name="VerityBall" parent="." unique_id=292186705 node_paths=PackedStringArray("skill") instance=ExtResource("1_ig7tw")]
-healthComponent = SubResource("Resource_bxe6i")
-speed = 36
-initialAngle = 43589.0
-ballName = "Verity"
-skill = NodePath("GunSkill")
+[node name="VerityBall" parent="." unique_id=292186705 instance=ExtResource("2_h2yge")]
+position = Vector2(-23, 2)
 
-[node name="GunSkill" parent="VerityBall" unique_id=563642783 instance=ExtResource("2_0xm2m")]
-
-[node name="VerityBall2" parent="." unique_id=39863513 node_paths=PackedStringArray("skill") instance=ExtResource("1_ig7tw")]
-healthComponent = SubResource("Resource_cy8b5")
-baseDamage = 25
-skill = NodePath("Contact")
-
-[node name="Contact" parent="VerityBall2" unique_id=2086127598 instance=ExtResource("4_1bvp3")]
+[node name="BijabilliBall" parent="." unique_id=240336343 instance=ExtResource("3_1bvp3")]
+position = Vector2(22, 22)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1244868719]
-position = Vector2(4, 2)
 zoom = Vector2(4, 4)

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bbifnmfg1l65u"]
 
 [ext_resource type="Script" uid="uid://dwbgqwq5umsse" path="res://scripts/ball.gd" id="1_41u45"]
-[ext_resource type="Texture2D" uid="uid://dhwud5symqxpq" path="res://assets/verity.png" id="1_x8fbi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
 friction = 0.0
@@ -21,6 +20,16 @@ script = ExtResource("1_41u45")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753604285]
 shape = SubResource("CircleShape2D_e8o8u")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1071816385]
-scale = Vector2(0.30468753, 0.30468753)
-texture = ExtResource("1_x8fbi")
+[node name="HealthLabel" type="RichTextLabel" parent="." unique_id=829895688]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -13.0
+offset_top = -15.0
+offset_right = 13.0
+offset_bottom = -11.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 3
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
