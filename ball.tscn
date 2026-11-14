@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bbifnmfg1l65u"]
+
+[ext_resource type="Script" uid="uid://dwbgqwq5umsse" path="res://scripts/ball.gd" id="1_41u45"]
+[ext_resource type="Texture2D" uid="uid://dhwud5symqxpq" path="res://assets/verity.png" id="1_x8fbi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8o8u"]
+
+[node name="Ball" type="RigidBody2D" unique_id=292186705]
+physics_material_override = SubResource("PhysicsMaterial_ig7tw")
+gravity_scale = 0.0
+linear_velocity = Vector2(50, -67)
+linear_damp_mode = 1
+angular_velocity = 1.1693707
+angular_damp_mode = 1
+script = ExtResource("1_41u45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753604285]
+shape = SubResource("CircleShape2D_e8o8u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1071816385]
+scale = Vector2(0.30468753, 0.30468753)
+texture = ExtResource("1_x8fbi")
