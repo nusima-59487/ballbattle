@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bbifnmfg1l65u"]
 
 [ext_resource type="Script" uid="uid://dwbgqwq5umsse" path="res://scripts/ball.gd" id="1_41u45"]
+[ext_resource type="Script" uid="uid://b4cytovqycn0b" path="res://health_label.gd" id="2_41u45"]
+[ext_resource type="FontFile" uid="uid://du57mds1e8ueg" path="res://assets/pixel_font/PressStart2P-Regular.ttf" id="2_ktgx5"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ig7tw"]
 friction = 0.0
@@ -17,19 +19,17 @@ angular_velocity = 1.1693707
 angular_damp_mode = 1
 script = ExtResource("1_41u45")
 
+[node name="HealthLabel" type="RichTextLabel" parent="." unique_id=870535307]
+top_level = true
+offset_left = -27.0
+offset_top = -15.000001
+offset_right = 135.5799
+offset_bottom = -1.000001
+scale = Vector2(0.33214438, 0.27905756)
+theme_override_fonts/normal_font = ExtResource("2_ktgx5")
+theme_override_font_sizes/normal_font_size = 16
+scroll_active = false
+script = ExtResource("2_41u45")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753604285]
 shape = SubResource("CircleShape2D_e8o8u")
-
-[node name="HealthLabel" type="RichTextLabel" parent="." unique_id=829895688]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -13.0
-offset_top = -15.0
-offset_right = 13.0
-offset_bottom = -11.0
-grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 3
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1

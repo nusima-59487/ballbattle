@@ -5,6 +5,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_e8o8u"]
 radius = 11.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_638ep"]
+
 [node name="Contact" type="Node2D" unique_id=2086127598]
 script = ExtResource("1_bxe6i")
 
@@ -12,3 +14,9 @@ script = ExtResource("1_bxe6i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=846513539]
 shape = SubResource("CircleShape2D_e8o8u")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=937700046]
+modulate = Color(1, 1, 1, 0.30588236)
+self_modulate = Color(1, 1, 1, 0.49411765)
+top_level = true
+shape = SubResource("RectangleShape2D_638ep")

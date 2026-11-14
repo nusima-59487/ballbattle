@@ -17,6 +17,8 @@ func _ready() -> void:
 	healthComponent.health_changed.connect(_on_health_changed); 
 	healthComponent.died.connect(_on_died); 
 	
+	$HealthLabel.text = str(healthComponent.health) + "/" + str(healthComponent.baseHealth)
+	
 	# temp
 	if self.skill: 
 		print("hi")

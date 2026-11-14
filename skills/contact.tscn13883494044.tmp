@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ckea26xkcx8ud"]
+
+[ext_resource type="Script" uid="uid://d4jve642fi4ff" path="res://scripts/skills/contact.gd" id="1_bxe6i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e8o8u"]
+radius = 11.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_638ep"]
+
+[node name="Contact" type="Node2D" unique_id=2086127598]
+script = ExtResource("1_bxe6i")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1902962586]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=846513539]
+shape = SubResource("CircleShape2D_e8o8u")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="." unique_id=937700046]
+top_level = true
+shape = SubResource("RectangleShape2D_638ep")

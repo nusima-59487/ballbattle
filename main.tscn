@@ -35,10 +35,10 @@ position = Vector2(0, -53)
 shape = SubResource("RectangleShape2D_i1io4")
 
 [node name="VerityBall" parent="." unique_id=292186705 instance=ExtResource("2_h2yge")]
-position = Vector2(-23, 2)
+position = Vector2(-18, 13)
 
 [node name="BijabilliBall" parent="." unique_id=240336343 instance=ExtResource("3_1bvp3")]
-position = Vector2(22, 22)
+position = Vector2(30, 19)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1244868719]
 zoom = Vector2(4, 4)
