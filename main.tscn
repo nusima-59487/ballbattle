@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://cmduosksoq088"]
 
-[ext_resource type="Texture2D" uid="uid://b17333xlc2d6y" path="res://assets/battle_backgroundC.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://dgkq1kwux1mwh" path="res://assets/battle_background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://x3ycjt64tjcq" path="res://scripts/battle.gd" id="1_1bvp3"]
-
 [ext_resource type="PackedScene" uid="uid://na58dyi6njlb" path="res://balls/verity_ball.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://donj2i1jrkbhp" path="res://balls/bijabilli_ball.tscn" id="3_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://dbemfhu7n076a" path="res://assets/verity.png" id="7_5vw27"]
+[ext_resource type="Texture2D" uid="uid://dbemfhu7n076a" path="res://assets/Verity.png" id="7_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1io4"]
 size = Vector2(120, 10)
@@ -18,7 +17,7 @@ script = ExtResource("1_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1703523905]
 scale = Vector2(0.3218243, 0.33301547)
-texture = ExtResource("1_h2yge")
+texture = ExtResource("1_0xm2m")
 
 [node name="BounceAreaBound" type="StaticBody2D" parent="." unique_id=1196473772]
 
