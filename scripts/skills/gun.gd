@@ -1,10 +1,8 @@
 extends Skill
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	print(self.get_parent())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -12,7 +10,12 @@ func _process(delta: float) -> void:
 
 
 # class_specific
-func activate() -> void:
+func activate(
+	base_atk_dmg: int, 
+	modifiers: Dictionary[String, int] = {}
+) -> void:
+	pass
+func deactivate() -> void:
 	pass
 func fire() -> void:
 	pass
