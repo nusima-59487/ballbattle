@@ -69,6 +69,7 @@ size = Vector2(19, 30)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=211825177]
 stream = ExtResource("1_f2txt")
+autoplay = true
 max_distance = 4096.0
 
 [node name="TileMapLayerTrain1" type="TileMapLayer" parent="." unique_id=690689305]
