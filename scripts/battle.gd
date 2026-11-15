@@ -43,6 +43,7 @@ func _process(delta: float) -> void:
 				var player_ball_tscn = load("res://balls/" + GameInstance.player_balls_lineup[i] + "_ball.tscn");
 				var player_ball = player_ball_tscn.instantiate() as Ball;
 				var spawn_position = battleground.get_global_mouse_position();
+				player_ball.healthComponent = player_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 				player_ball.position = spawn_position;
 				print(GameInstance.player_balls_lineup[i], " sonned ")
 				add_child(player_ball)
