@@ -33,7 +33,6 @@ func _ready() -> void:
 		#if self.position == target_position:
 			#print("im here")
 
-
 func get_speaker_name() -> String:
 	return display_name if display_name != "" else str(name)
 

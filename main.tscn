@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://dgkq1kwux1mwh" path="res://assets/battle_background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://x3ycjt64tjcq" path="res://scripts/battle.gd" id="1_1bvp3"]
-[ext_resource type="Script" path="res://scripts/battle_visuals.gd" id="2_visfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1io4"]
 size = Vector2(275, 34)

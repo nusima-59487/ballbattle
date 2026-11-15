@@ -124,12 +124,23 @@ func _on_enemy_ball_die():
 		# enemy ran out of balls, you win
 		print("You win!")
 		var mapscene: Node2D = load("res://level.tscn").instantiate(); 
-		var e = mapscene.find_child(GameInstance.last_battle_enemy_opponent, false)
-		if e: 
-			e.queue_free(); 
+		for e in GameInstance.defeated_opponent_enemies: 
+			var f = mapscene.find_child(e, false)
+
+			if f: 
+				f.queue_free(); 
 		
 		var player: CharacterBody2D = mapscene.find_child("CharacterBody2D", false)
-		player.position = GameInstance.player_map_pos; 
+		player.position = GameInstance.player_map_pos;
+
+		var g: LevelEnemy = mapscene.find_child(GameInstance.last_battle_enemy_opponent, false); 
+		if g and !g.defeat_dialogue.is_empty(): 
+			g._triggered = true
+			DialogueBox.show_dialogue(mapscene, g.get_speaker_name(), g.defeat_dialogue); 
+		elif g: 
+			GameInstance.defeated_opponent_enemies.append(g.name); 
+			g.queue_free()
+		
 		
 		get_tree().call_deferred("change_scene_to_node", mapscene)
 	else: 
