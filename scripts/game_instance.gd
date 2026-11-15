@@ -1,7 +1,7 @@
 extends Node
 
 var player_balls_available: Array[String] = []
-var player_balls_lineup: Array[String] = ["verity"]
+var player_balls_lineup: Array[String] = ["bijabilli"]
 
 var current_enemy_balls: Array[String]; 
 

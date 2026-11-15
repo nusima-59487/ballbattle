@@ -32,6 +32,12 @@ static func show_dialogue(parent: Node, speaker: String, lines: Array[String], f
 	box._speaker = speaker
 	box._lines = lines
 	box._fullscreen = fullscreen
+
+	if parent.name == "VerityVillager": 
+		GameInstance.player_balls_lineup.append("verity")
+	elif parent.name == "LovityVillager": 
+		GameInstance.player_balls_lineup.append("lovity")
+
 	parent.add_child(box)
 	return box
 
