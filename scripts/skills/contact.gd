@@ -26,6 +26,6 @@ func fire() -> void:
 	pass
 
 func ontouch(body: Node2D): 
-	print("hi fellow ball")
 	if body is Ball and hitray.get_collider(0) is Ball: 
 		body.healthComponent.damage(basedmg); 
+		fired.emit()
