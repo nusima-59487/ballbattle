@@ -37,18 +37,21 @@ func _process(delta: float) -> void:
 		player_ball.fire_ult(enemy_ball)
 	if enemy_ball and player_ball:
 		enemy_ball.fire_ult(player_ball)
-	if can_spawn:
-		for i in range(0,len(player_slots)):
-			if player_slots[i].button_pressed == true and Input.is_action_just_pressed("click") and len(battleground.get_overlapping_bodies()) < 2:
-				player_slots[i].button_pressed = false
-				player_slots[i].disabled = true
-				var player_ball_tscn = load("res://balls/" + GameInstance.player_balls_lineup[i] + "_ball.tscn");
-				player_ball = player_ball_tscn.instantiate();
-				var spawn_position = battleground.get_global_mouse_position();
-				player_ball.healthComponent = player_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
-				player_ball.position = spawn_position;
-				add_child(player_ball)
-				player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
+	for i in range(0,len(player_slots)):
+		if (player_slots[i].button_pressed == true):
+			if (len(battleground.get_overlapping_bodies()) < 2 and can_spawn):
+				var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
+				var img_texture = ImageTexture.create_from_image(img)
+				if (Input.is_action_just_pressed("click")):
+					player_slots[i].button_pressed = false
+					player_slots[i].disabled = true
+					var player_ball_tscn = load("res://balls/" + GameInstance.player_balls_lineup[i] + "_ball.tscn");
+					player_ball = player_ball_tscn.instantiate();
+					var spawn_position = battleground.get_global_mouse_position();
+					player_ball.healthComponent = player_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+					player_ball.position = spawn_position;
+					add_child(player_ball)
+					player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
 		
 
 func spawn() -> void:

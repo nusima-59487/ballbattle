@@ -1,0 +1,98 @@
+[gd_scene format=4 uid="uid://d3pgwr84kii8m"]
+
+[ext_resource type="Texture2D" uid="uid://b6fnawgx5ke2d" path="res://assets/plains.png" id="1_u52ul"]
+[ext_resource type="Texture2D" uid="uid://73c5h28awrg1" path="res://assets/verityC.png" id="2_vonw3"]
+[ext_resource type="Texture2D" uid="uid://dq6uq2eapr7ct" path="res://assets/bijabilliC.png" id="3_oi3di"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
+texture = ExtResource("1_u52ul")
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+5:8/0 = 0
+0:9/0 = 0
+1:9/0 = 0
+2:9/0 = 0
+3:9/0 = 0
+4:9/0 = 0
+5:9/0 = 0
+0:10/0 = 0
+1:10/0 = 0
+2:10/0 = 0
+3:10/0 = 0
+4:10/0 = 0
+5:10/0 = 0
+0:11/0 = 0
+1:11/0 = 0
+2:11/0 = 0
+3:11/0 = 0
+4:11/0 = 0
+5:11/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_638ep"]
+sources/0 = SubResource("TileSetAtlasSource_vonw3")
+
+[node name="Node2D" type="Node2D" unique_id=502099484]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=690689305]
+tile_map_data = PackedByteArray("AAAAAAEAAAACAAUAAAAAAAIAAAACAAUAAAABAAIAAAACAAUAAAACAAIAAAACAAUAAAACAAMAAAACAAQAAAACAAQAAAACAAUAAAAAAAMAAAACAAUAAAAAAAQAAAACAAUAAAABAAMAAAABAAQAAAABAAQAAAABAAUAAAACAAUAAAACAAYAAAADAAQAAAACAAUAAAAAAAUAAAACAAUAAAABAAUAAAABAAYAAAABAAEAAAACAAUAAAACAAEAAAACAAUAAAAAAAYAAAACAAUAAAABAAYAAAACAAUAAAACAAYAAAACAAUAAAADAAEAAAACAAUAAAADAAIAAAACAAUAAAADAAMAAAACAAQAAAAEAAEAAAACAAUAAAAEAAIAAAACAAUAAAAEAAMAAAADAAQAAAAFAAEAAAACAAUAAAAFAAIAAAACAAUAAAAFAAMAAAACAAUAAAAEAAQAAAADAAUAAAAFAAQAAAACAAUAAAADAAUAAAACAAYAAAADAAYAAAACAAUAAAADAAcAAAACAAUAAAAEAAUAAAADAAYAAAAEAAYAAAACAAUAAAAEAAcAAAACAAUAAAAFAAUAAAACAAUAAAAFAAYAAAACAAUAAAAFAAcAAAACAAUAAAABAAcAAAACAAUAAAACAAcAAAACAAUAAAAAAAcAAAACAAUAAAAAAAgAAAACAAUAAAABAAgAAAACAAUAAAACAAgAAAACAAUAAAADAAgAAAACAAUAAAAEAAgAAAACAAUAAAAFAAgAAAACAAUAAAA=")
+tile_set = SubResource("TileSet_638ep")
+
+[node name="VerityC" type="Sprite2D" parent="." unique_id=555014355]
+position = Vector2(8, 24)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_vonw3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=434948976]
+zoom = Vector2(3, 3)
+
+[node name="BijabilliC" type="Sprite2D" parent="." unique_id=1882833882]
+position = Vector2(35.75, 26.75)
+scale = Vector2(0.25781253, 0.2578125)
+texture = ExtResource("3_oi3di")
