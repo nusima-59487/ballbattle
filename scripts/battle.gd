@@ -31,7 +31,7 @@ const BALL_TEXTURES: Dictionary[String, Texture2D] = {
 	"krill": preload("res://assets/Krill.png"),
 	"lovity": preload("res://assets/lovity.png"),
 	"summon_knight": preload("res://assets/summon_knight.png"),
-	"verity": preload("res://assets/Verity.png"),
+	"verity": preload("res://assets/verity.png"),
 }
 const BALL_SCENES: Dictionary[String, PackedScene] = {
 	"angler": preload("res://balls/angler_ball.tscn"),

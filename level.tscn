@@ -222,7 +222,7 @@ defeat_dialogue = Array[String](["......", "You've become much stronger...", "Bu
 
 [node name="Enemy2" parent="." unique_id=1167607563 instance=ExtResource("4_0b4ue")]
 position = Vector2(-1055, -1139)
-balls_lineup = Array[String](["bijabilli", "angler"])
+balls_lineup = Array[String](["verity", "angler"])
 display_name = "Unnamed"
 intro_dialogue = Array[String](["Oh ho ho ho! Look who's back!", "Didn't you learn your lesson already? And you are still taking revenge? ", "Here, let me give you a chance. Begone from the Bluecoats gang, or get slayed right here!", "....", "Very well. I will kill you at the spot then. Meet your demise!"])
 defeat_dialogue = Array[String](["......", "Ahahahahahah I've lost!", "Do whatever you want, but never fight with Don Frank again. ", "You had already been knocked over by him once... And he's gonna win no matter how hard you try..", "If I were you I would leave and never come back... Since nothing is more horrible than death..."])
