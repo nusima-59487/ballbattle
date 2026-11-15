@@ -24,6 +24,10 @@ GameInstance="*uid://ce8moqg7r2ol1"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+krill=""
+
 [input]
 
 click={

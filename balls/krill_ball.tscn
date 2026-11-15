@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://di4qf4xnn38cl"]
+
+[ext_resource type="PackedScene" uid="uid://bbifnmfg1l65u" path="res://scripts/ball.tscn" id="1_ach4g"]
+[ext_resource type="Script" uid="uid://bom0pocgkgyic" path="res://scripts/health_sys.gd" id="2_r72ll"]
+[ext_resource type="PackedScene" uid="uid://ckea26xkcx8ud" path="res://skills/contact.tscn" id="3_3ucff"]
+[ext_resource type="Texture2D" uid="uid://becsvjnbq3345" path="res://assets/KrillC.png" id="4_ach4g"]
+[ext_resource type="Script" uid="uid://ur3pst3xfc76" path="res://skills/krilltact.gd" id="4_r72ll"]
+[ext_resource type="Script" uid="uid://dfjr0a2qquwys" path="res://scripts/ults/krill_ult.gd" id="5_ach4g"]
+
+[sub_resource type="Resource" id="Resource_lquwl"]
+script = ExtResource("2_r72ll")
+baseHealth = 90
+health = 90
+metadata/_custom_type_script = "uid://bom0pocgkgyic"
+
+[node name="VerityBall" unique_id=292186705 node_paths=PackedStringArray("skill") groups=["krill"] instance=ExtResource("1_ach4g")]
+mass = 0.1
+constant_torque = 2.0
+healthComponent = SubResource("Resource_lquwl")
+speed = 120
+angularVelocity = 5
+baseDamage = 3
+ballName = "krill"
+skill = NodePath("Contact")
+
+[node name="Contact" parent="." index="1" unique_id=2086127598 node_paths=PackedStringArray("num") groups=["krill"] instance=ExtResource("3_3ucff")]
+script = ExtResource("4_r72ll")
+num = NodePath("../Node2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=570881704]
+scale = Vector2(0.30468753, 0.30468753)
+texture = ExtResource("4_ach4g")
+
+[node name="UltNode" parent="." index="4" unique_id=1371526384]
+script = ExtResource("5_ach4g")
