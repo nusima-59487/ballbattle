@@ -64,7 +64,7 @@ func spawn_enemy_ball(idx: int):
 	enemy_ball.die.connect(_on_enemy_ball_die)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_key_pressed(KEY_SPACE) and player_ball and enemy_ball: 
 		player_ball.fire_ult(enemy_ball)
 	if enemy_ball and player_ball:
@@ -73,8 +73,6 @@ func _process(delta: float) -> void:
 		if (player_slots[i].button_pressed == true):
 			player_slots[i].modulate = Color(0.355, 0.355, 0.355, 1.0)
 			if (len(battleground.get_overlapping_bodies()) < 2 and can_spawn):
-				var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
-				var img_texture = ImageTexture.create_from_image(img)
 				if (Input.is_action_just_pressed("click")):
 					player_slots[i].button_pressed = false
 					player_slots[i].disabled = true

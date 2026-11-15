@@ -48,7 +48,7 @@ func _ready() -> void:
 
 
 	
-func _on_health_changed(current: int, base: int, delta: int): 
+func _on_health_changed(current: int, base: int, _delta: int): 
 	$HealthLabel.text = str(current) + "/" + str(base)
 	
 func _on_died(): 
