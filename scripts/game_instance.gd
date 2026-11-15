@@ -1,7 +1,7 @@
 extends Node
 
 var player_balls_available: Array[String] = []
-var player_balls_lineup: Array[String] = ["bijabilli", "angler","krill"]
+var player_balls_lineup: Array[String] = ["bijabilli", "angler","summon_knight"]
 
 
 # Called when the node enters the scene tree for the first time.
