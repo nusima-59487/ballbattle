@@ -30,9 +30,8 @@ func _ready() -> void:
 	for i in min(GameInstance.player_balls_lineup.size(), 3): 
 		var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
 		var img_texture = ImageTexture.create_from_image(img)
-		var img1 = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + "C.png")
-		var img_texture1 = ImageTexture.create_from_image(img1)
-		player_slots[i].texture_hover = img_texture1
+		player_slots[i].mouse_entered.connect(func() -> void : player_slots[i].modulate = Color(0.355, 0.355, 0.355, 1.0))
+		player_slots[i].mouse_exited.connect(func() -> void : player_slots[i].modulate = Color(1.0, 1.0, 1.0, 1.0))
 		player_slots[i].texture_normal = img_texture
 	for i in min(GameInstance.current_enemy_balls.size(), 3): 
 		var img = Image.load_from_file("res://assets/" + GameInstance.current_enemy_balls[i] + ".png")
