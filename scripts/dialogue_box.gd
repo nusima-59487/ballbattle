@@ -83,7 +83,7 @@ func _build_box_ui() -> void:
 	vbox.add_theme_constant_override("separation", 12)
 	panel.add_child(vbox)
 
-	var name_label := _make_label(16, Color(1.0, 0.85, 0.3))
+	var name_label := _make_label(16, Color.WHITE)
 	name_label.text = _speaker
 	name_label.visible = _speaker != ""
 	vbox.add_child(name_label)
@@ -94,7 +94,7 @@ func _build_box_ui() -> void:
 	vbox.add_child(_text_label)
 
 	_hint_label = _make_label(10, Color(1, 1, 1, 0.6))
-	_hint_label.text = "click / space  >"
+	_hint_label.text = " ▼  "
 	_hint_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 	vbox.add_child(_hint_label)
 
@@ -115,7 +115,7 @@ func _build_fullscreen_ui() -> void:
 	bg.add_child(_text_label)
 
 	_hint_label = _make_label(10, Color(1, 1, 1, 0.6))
-	_hint_label.text = "click / space  >"
+	_hint_label.text = " ▼  "
 	_hint_label.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
 	_hint_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
 	_hint_label.grow_vertical = Control.GROW_DIRECTION_BEGIN
