@@ -29,7 +29,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_key_pressed(KEY_SPACE) and player_ball: 
+		player_ball.fire_ult()
 
 
 
@@ -43,7 +44,6 @@ func _on_player_slot_3_pressed() -> void:
 	player_slot_1.button_pressed = false
 	player_slot_2.button_pressed = false
 func _on_player_ult_bar_change(new_percentage: int): 
-	print("aoeitbdsj")
 	player_ult_bar.value = new_percentage
 func _on_enemy_ult_bar_change(new_percentage: int): 
 	enemy_ult_bar.value = new_percentage

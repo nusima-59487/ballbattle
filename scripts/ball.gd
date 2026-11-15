@@ -15,6 +15,8 @@ var ult_gauge_percentage: int = 0:
 		ult_gauge_percentage = clampi(value, 0, 100); 
 		ult_gauge_percentage_update.emit(ult_gauge_percentage)
 
+@onready var ult: Ult; 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	self.angular_velocity = angularVelocity; 
@@ -25,9 +27,11 @@ func _ready() -> void:
 	
 	$HealthLabel.text = str(healthComponent.health) + "/" + str(healthComponent.baseHealth)
 	
+	if $UltNode is Ult: 
+		self.ult = $UltNode
+	
 	# temp
 	if self.skill: 
-		print("hi")
 		self.skill.activate(baseDamage);  
 		self.skill.fired.connect(_on_skill_fired)
 
@@ -43,3 +47,8 @@ func _on_died():
 	queue_free(); 
 func _on_skill_fired(): 
 	pass
+	
+func fire_ult(): 
+	if self.ult && self.ult_gauge_percentage == 100: 
+		self.ult.fire(baseDamage)
+		self.ult_gauge_percentage = 0

@@ -33,3 +33,5 @@ script = ExtResource("2_41u45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753604285]
 shape = SubResource("CircleShape2D_e8o8u")
+
+[node name="UltNode" type="Node2D" parent="." unique_id=1371526384]

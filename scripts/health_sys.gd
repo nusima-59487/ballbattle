@@ -20,11 +20,13 @@ func damage(damage_amount: int):
 		health_changed.emit(health, baseHealth, -damage_amount); 
 	else: 
 		died.emit(); 
-		print_debug("I died")
-	print_debug("I took damage! ", health, "/", baseHealth)
 
 func heal(heal_amount: int): 
 	health += heal_amount; 
 	if health > baseHealth: 
 		health = baseHealth
 	health_changed.emit(health, baseHealth, heal_amount); 
+	
+func _init(health: int = 100, baseHealth: int = 100) -> void:
+	self.baseHealth = baseHealth
+	self.health = health
