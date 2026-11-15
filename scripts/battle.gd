@@ -43,7 +43,7 @@ func _ready() -> void:
 	
 
 func spawn_enemy_ball(idx: int): 
-	var enemy_ball_tscn = load("res://balls/" + GameInstance.current_enemy_balls[0] + "_ball.tscn");
+	var enemy_ball_tscn = load("res://balls/" + GameInstance.current_enemy_balls[idx] + "_ball.tscn");
 	enemy_ball = enemy_ball_tscn.instantiate();
 	var spawn_position = Vector2.ZERO;
 	enemy_ball.healthComponent = enemy_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
