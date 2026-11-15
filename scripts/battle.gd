@@ -24,9 +24,23 @@ var can_spawn = false
 @onready var enemy_ult_bar: ProgressBar = $EnemyUltBar
 
 
-
-var empty_img = Image.load_from_file("res://assets/empty.png")
-var empty_img_texture = ImageTexture.create_from_image(empty_img)
+const EMPTY_IMG_TEXTURE: Texture2D = preload("res://assets/empty.png")
+const BALL_TEXTURES: Dictionary[String, Texture2D] = {
+	"angler": preload("res://assets/angler.png"),
+	"bijabilli": preload("res://assets/bijabilli.png"),
+	"krill": preload("res://assets/Krill.png"),
+	"lovity": preload("res://assets/lovity.png"),
+	"summon_knight": preload("res://assets/summon_knight.png"),
+	"verity": preload("res://assets/Verity.png"),
+}
+const BALL_SCENES: Dictionary[String, PackedScene] = {
+	"angler": preload("res://balls/angler_ball.tscn"),
+	"bijabilli": preload("res://balls/bijabilli_ball.tscn"),
+	"krill": preload("res://balls/krill_ball.tscn"),
+	"lovity": preload("res://balls/lovity_ball.tscn"),
+	"summon_knight": preload("res://balls/summon_knight_ball.tscn"),
+	"verity": preload("res://balls/verity_ball.tscn"),
+}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,14 +49,16 @@ func _ready() -> void:
 	
 	player_balls_left = GameInstance.player_balls_lineup.size(); 
 	for i in min(GameInstance.player_balls_lineup.size(), 3): 
-		var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
-		var img_texture = ImageTexture.create_from_image(img)
+		var img_texture := _get_ball_texture(GameInstance.player_balls_lineup[i])
+		if img_texture == null:
+			continue
 		player_slots[i].mouse_entered.connect(func() -> void : player_slots[i].modulate = Color(0.355, 0.355, 0.355, 1.0))
 		player_slots[i].mouse_exited.connect(func() -> void : player_slots[i].modulate = Color(1.0, 1.0, 1.0, 1.0))
 		player_slots[i].texture_normal = img_texture
 	for i in min(GameInstance.current_enemy_balls.size(), 3): 
-		var img = Image.load_from_file("res://assets/" + GameInstance.current_enemy_balls[i] + ".png")
-		var img_texture = ImageTexture.create_from_image(img)
+		var img_texture := _get_ball_texture(GameInstance.current_enemy_balls[i])
+		if img_texture == null:
+			continue
 		enemy_slots[i].texture = img_texture
 		
 	current_enemy_ball_idx = 0; 
@@ -51,7 +67,9 @@ func _ready() -> void:
 
 func spawn_enemy_ball(idx: int): 
 	if idx >= GameInstance.current_enemy_balls.size(): return; 
-	var enemy_ball_tscn = load("res://balls/" + GameInstance.current_enemy_balls[idx] + "_ball.tscn");
+	var enemy_ball_tscn := _get_ball_scene(GameInstance.current_enemy_balls[idx])
+	if enemy_ball_tscn == null:
+		return
 	enemy_ball = enemy_ball_tscn.instantiate();
 	var spawn_position = Vector2.ZERO;
 	enemy_ball.healthComponent = enemy_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
@@ -63,6 +81,18 @@ func spawn_enemy_ball(idx: int):
 	add_child(enemy_ball)
 	enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
 	enemy_ball.die.connect(_on_enemy_ball_die)
+
+func _get_ball_texture(ball_id: String) -> Texture2D:
+	if not BALL_TEXTURES.has(ball_id):
+		push_error("No battle texture registered for ball '%s'." % ball_id)
+		return null
+	return BALL_TEXTURES[ball_id]
+
+func _get_ball_scene(ball_id: String) -> PackedScene:
+	if not BALL_SCENES.has(ball_id):
+		push_error("No battle scene registered for ball '%s'." % ball_id)
+		return null
+	return BALL_SCENES[ball_id]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -116,7 +146,7 @@ func _on_enemy_ult_bar_change(new_percentage: int):
 	enemy_ult_bar.value = new_percentage
 
 func _on_enemy_ball_die(): 
-	enemy_slots[current_enemy_ball_idx].texture = empty_img_texture
+	enemy_slots[current_enemy_ball_idx].texture = EMPTY_IMG_TEXTURE
 	current_enemy_ball_idx += 1; 
 
 	await get_tree().create_timer(1).timeout
@@ -148,7 +178,7 @@ func _on_enemy_ball_die():
 
 func _on_player_ball_die(): 
 	#var 
-	player_slots[current_player_ball_idx].texture_disabled = empty_img_texture
+	player_slots[current_player_ball_idx].texture_disabled = EMPTY_IMG_TEXTURE
 	player_balls_left -= 1; 
 	if player_balls_left == 0: 
 		# player ran out of balls, you lose
