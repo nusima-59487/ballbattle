@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ymcwuel0kag"]
+
+[ext_resource type="Texture2D" uid="uid://tmx28xjq0ygo" path="res://assets/npc.png" id="1_xxcha"]
+[ext_resource type="Script" uid="uid://d254qp22endd4" path="res://scripts/npc.gd" id="2_xxcha"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_48uxq"]
+radius = 50.159744
+
+[node name="Enemy" type="Sprite2D" unique_id=1167607563]
+scale = Vector2(2, 2)
+texture = ExtResource("1_xxcha")
+script = ExtResource("2_xxcha")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1509104985]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1276048036]
+shape = SubResource("CircleShape2D_48uxq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
