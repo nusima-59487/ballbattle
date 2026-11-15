@@ -95,7 +95,7 @@ polygon = PackedVector2Array(-793, -1341, -708, -1529, -786, -1574, -1013, -1607
 
 [node name="Enemy" parent="." unique_id=544133219 instance=ExtResource("4_0b4ue")]
 position = Vector2(-71, -94)
-balls_lineup = Array[String](["verity", "summon_knight"])
+balls_lineup = Array[String](["verity", "krill"])
 display_name = "Other Grunt"
 intro_dialogue = Array[String](["You stand right there!", "Wait... I've seen you before! 
 Why are you still here?", "I am going to end you right here!"])

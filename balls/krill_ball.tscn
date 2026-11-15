@@ -9,8 +9,8 @@
 
 [sub_resource type="Resource" id="Resource_lquwl"]
 script = ExtResource("2_r72ll")
-baseHealth = 150
-health = 150
+baseHealth = 80
+health = 80
 metadata/_custom_type_script = "uid://bom0pocgkgyic"
 
 [node name="KrillBall" unique_id=292186705 node_paths=PackedStringArray("skill") groups=["krill"] instance=ExtResource("1_ach4g")]

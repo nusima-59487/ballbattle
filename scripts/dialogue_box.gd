@@ -33,9 +33,9 @@ static func show_dialogue(parent: Node, speaker: String, lines: Array[String], f
 	box._lines = lines
 	box._fullscreen = fullscreen
 
-	if parent.name == "VerityVillager": 
+	if speaker == "Ball Collector": 
 		GameInstance.player_balls_lineup.append("verity")
-	elif parent.name == "LovityVillager": 
+	if speaker == "Bob": 
 		GameInstance.player_balls_lineup.append("lovity")
 
 	parent.add_child(box)

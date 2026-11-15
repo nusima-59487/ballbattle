@@ -56,7 +56,7 @@ func spawn_enemy_ball(idx: int):
 	var spawn_position = Vector2.ZERO;
 	enemy_ball.healthComponent = enemy_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 	enemy_ball.position = spawn_position;
-	enemy_ball.angularVelocity = randi_range(0, 359)
+	enemy_ball.initialAngle = randi_range(0, 359)
 	enemy_ball.find_child("HealthLabel").modulate = Color(1.0, 0.188, 0.188, 1.0)
 	var damage_label := enemy_ball.find_child("Node2D").find_child("Label") as Label
 	damage_label.modulate = Color(1.0, 0.188, 0.188, 1.0)
@@ -83,7 +83,7 @@ func _process(_delta: float) -> void:
 					var spawn_position = battleground.get_global_mouse_position();
 					player_ball.healthComponent = player_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 					player_ball.position = spawn_position;
-					player_ball.angularVelocity = randi_range(0, 359)
+					player_ball.initialAngle = randi_range(0, 359)
 					add_child(player_ball)
 					player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
 					player_ball.die.connect(_on_player_ball_die)
