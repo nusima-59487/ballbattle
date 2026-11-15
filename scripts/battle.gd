@@ -18,7 +18,9 @@ var can_spawn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	enemy_ball.modulate = Color(1,0.5,0.5,1)
+	enemy_ball.find_child("HealthLabel").modulate = Color(1.0, 0.188, 0.188, 1.0)
+	var damage_label := enemy_ball.find_child("Node2D").find_child("Label") as Label
+	damage_label.modulate = Color(1.0, 0.188, 0.188, 1.0)
 	battleground.mouse_entered.connect(spawn)
 	battleground.mouse_exited.connect(exit)
 	#player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 

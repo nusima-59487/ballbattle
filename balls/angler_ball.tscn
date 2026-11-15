@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bbifnmfg1l65u" path="res://scripts/ball.tscn" id="1_st0f3"]
 [ext_resource type="Script" uid="uid://bom0pocgkgyic" path="res://scripts/health_sys.gd" id="2_8ns5r"]
-[ext_resource type="Texture2D" uid="uid://msgtyr7hepus" path="res://assets/angler (2).png" id="3_fv0oe"]
+[ext_resource type="Texture2D" uid="uid://c5i4xurgo35sx" path="res://assets/angler/sprite_0.png" id="3_okmll"]
 [ext_resource type="Script" uid="uid://bxb0etlkibrql" path="res://scripts/ults/anglerult.gd" id="4_okmll"]
-[ext_resource type="Texture2D" uid="uid://bbusmyq67gnmf" path="res://assets/hook.png" id="4_st0f3"]
+[ext_resource type="Texture2D" uid="uid://bcnr3nhujaivb" path="res://assets/angler/angler (4).png" id="5_okmll"]
 [ext_resource type="Script" uid="uid://b335jvgej00vd" path="res://scripts/skills/hook.gd" id="5_st0f3"]
 [ext_resource type="PackedScene" uid="uid://ckea26xkcx8ud" path="res://skills/contact.tscn" id="6_4a36c"]
 [ext_resource type="Script" uid="uid://bsnpbv0e1v8ii" path="res://scripts/line.gd" id="6_st0f3"]
@@ -33,13 +33,13 @@ additional_skill = NodePath("Contact")
 [node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=134958954]
 position = Vector2(0, -3)
 scale = Vector2(0.4140625, 0.40625)
-texture = ExtResource("3_fv0oe")
+texture = ExtResource("3_okmll")
 
 [node name="UltNode" parent="." index="3" unique_id=1371526384]
 script = ExtResource("4_okmll")
 
 [node name="hook" type="RigidBody2D" parent="." index="5" unique_id=841554084]
-position = Vector2(12, -3)
+position = Vector2(10, -12)
 mass = 0.004
 physics_material_override = SubResource("PhysicsMaterial_638ep")
 gravity_scale = 0.748
@@ -50,9 +50,9 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_638ep")
 
 [node name="Sprite2D" type="Sprite2D" parent="hook" index="1" unique_id=1623480104]
-position = Vector2(-1, 0.99999905)
+position = Vector2(0, 7)
 scale = Vector2(0.53125, 0.53125)
-texture = ExtResource("4_st0f3")
+texture = ExtResource("5_okmll")
 
 [node name="hook_contact" type="Node2D" parent="hook" index="2" unique_id=1442015571 node_paths=PackedStringArray("num")]
 position = Vector2(-12, 3)
@@ -70,14 +70,15 @@ shape = SubResource("RectangleShape2D_doepa")
 position = Vector2(10, -12)
 points = PackedVector2Array(1, 0, 0, 0)
 width = 1.5
-default_color = Color(0.21960784, 0.21960784, 0.21960784, 1)
+default_color = Color(0.19607843, 0.078431375, 0.14117648, 1)
 script = ExtResource("6_st0f3")
 
 [node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="." index="7" unique_id=480680048]
-position = Vector2(11, -13)
+position = Vector2(1, -13)
+rotation = -1.4402561
 node_a = NodePath("..")
 node_b = NodePath("../hook")
-length = 9.0
+length = 14.0
 stiffness = 64.0
 damping = 0.06
 

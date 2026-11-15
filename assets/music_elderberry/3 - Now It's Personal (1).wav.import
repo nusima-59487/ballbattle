@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://yg56d4315u20"
+path="res://.godot/imported/3 - Now It's Personal (1).wav-3ad828542afded0e775da49eca043fea.sample"
+
+[deps]
+
+source_file="res://assets/music_elderberry/3 - Now It's Personal (1).wav"
+dest_files=["res://.godot/imported/3 - Now It's Personal (1).wav-3ad828542afded0e775da49eca043fea.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
