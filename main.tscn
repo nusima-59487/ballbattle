@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://dgkq1kwux1mwh" path="res://assets/battle_background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://x3ycjt64tjcq" path="res://scripts/battle.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://na58dyi6njlb" path="res://balls/verity_ball.tscn" id="2_h2yge"]
-[ext_resource type="Texture2D" uid="uid://dbemfhu7n076a" path="res://assets/Verity.png" id="7_5vw27"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i1io4"]
 size = Vector2(120, 10)
@@ -49,12 +48,11 @@ zoom = Vector2(4, 4)
 [node name="PlayerSlot1" type="TextureButton" parent="." unique_id=66976012]
 offset_left = -65.0
 offset_top = 17.0
-offset_right = -1.0
-offset_bottom = 81.0
+offset_right = -65.0
+offset_bottom = 17.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(-11, -10)
 toggle_mode = true
-texture_normal = ExtResource("7_5vw27")
 
 [node name="PlayerSlot2" type="TextureButton" parent="." unique_id=1549977663]
 offset_left = -65.0
@@ -81,6 +79,22 @@ scale = Vector2(0.25, 0.25)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1158493134]
 position = Vector2(295, -42)
 shape = SubResource("RectangleShape2D_638ep")
+
+[node name="PlayerUltBar" type="ProgressBar" parent="." unique_id=2029390507]
+offset_left = -72.0
+offset_top = -54.0
+offset_right = -58.0
+offset_bottom = -16.0
+fill_mode = 3
+show_percentage = false
+
+[node name="EnemyUltBar" type="ProgressBar" parent="." unique_id=1457381256]
+offset_left = 62.0
+offset_top = -54.0
+offset_right = 76.0
+offset_bottom = -16.0
+fill_mode = 3
+show_percentage = false
 
 [connection signal="pressed" from="PlayerSlot1" to="." method="_on_player_slot_1_button_pressed"]
 [connection signal="pressed" from="PlayerSlot2" to="." method="_on_player_slot_2_button_pressed"]

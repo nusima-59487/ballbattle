@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bom0pocgkgyic" path="res://scripts/health_sys.gd" id="2_hcn35"]
 [ext_resource type="PackedScene" uid="uid://ckea26xkcx8ud" path="res://skills/contact.tscn" id="2_roapt"]
 [ext_resource type="Texture2D" uid="uid://73c5h28awrg1" path="res://assets/verityC.png" id="4_roapt"]
+[ext_resource type="Script" uid="uid://vxfk5vcvk8j1" path="res://scripts/ults/verity.gd" id="5_hcn35"]
 
 [sub_resource type="Resource" id="Resource_lquwl"]
 script = ExtResource("2_hcn35")
@@ -23,3 +24,6 @@ skill = NodePath("Contact")
 [node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=570881704]
 scale = Vector2(0.30468753, 0.30468753)
 texture = ExtResource("4_roapt")
+
+[node name="UltNode" parent="." index="4" unique_id=1371526384]
+script = ExtResource("5_hcn35")
