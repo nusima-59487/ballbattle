@@ -27,6 +27,9 @@ func _ready() -> void:
 	
 	$HealthLabel.text = str(healthComponent.health) + "/" + str(healthComponent.baseHealth)
 	
+	print($UltNode)
+	print($UltNode is Ult)
+	
 	if $UltNode is Ult: 
 		self.ult = $UltNode
 	
@@ -47,6 +50,7 @@ func _on_skill_fired():
 	pass
 	
 func fire_ult(): 
+	print(ult)
 	if self.ult && self.ult_gauge_percentage == 100: 
 		self.ult.fire(baseDamage)
 		self.ult_gauge_percentage = 0

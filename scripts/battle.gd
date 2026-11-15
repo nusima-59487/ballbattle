@@ -8,8 +8,8 @@ extends Node2D
 @onready var battleground: Area2D = $Area2D
 var can_spawn = false
 
-@onready var player_ball: Ball = $VerityBall
-@onready var enemy_ball: Ball = $BijabilliBall
+@onready var player_ball: Ball
+@onready var enemy_ball: Ball = $VerityBall
 
 @onready var player_ult_bar: ProgressBar = $PlayerUltBar
 @onready var enemy_ult_bar: ProgressBar = $EnemyUltBar
@@ -21,7 +21,7 @@ func _ready() -> void:
 	battleground.mouse_entered.connect(spawn)
 	battleground.mouse_exited.connect(exit)
 	#player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
-	#enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
+	enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
 	for i in min(GameInstance.player_balls_lineup.size(), 3): 
 		var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
 		var img_texture = ImageTexture.create_from_image(img)
@@ -41,12 +41,12 @@ func _process(delta: float) -> void:
 				player_slots[i].button_pressed = false
 				player_slots[i].disabled = true
 				var player_ball_tscn = load("res://balls/" + GameInstance.player_balls_lineup[i] + "_ball.tscn");
-				var player_ball = player_ball_tscn.instantiate() as Ball;
+				player_ball = player_ball_tscn.instantiate();
 				var spawn_position = battleground.get_global_mouse_position();
 				player_ball.healthComponent = player_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
 				player_ball.position = spawn_position;
-				print(GameInstance.player_balls_lineup[i], " sonned ")
 				add_child(player_ball)
+				player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
 		
 
 func spawn() -> void:
