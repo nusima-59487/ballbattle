@@ -133,7 +133,7 @@ func _on_enemy_ball_die():
 		var player: CharacterBody2D = mapscene.find_child("CharacterBody2D", false)
 		player.position = GameInstance.player_map_pos;
 
-		var g: LevelEnemy = mapscene.find_child(GameInstance.last_battle_enemy_opponent, false); 
+		var g = mapscene.find_child(GameInstance.last_battle_enemy_opponent, false); 
 		if g and !g.defeat_dialogue.is_empty(): 
 			g._triggered = true
 			DialogueBox.show_dialogue(mapscene, g.get_speaker_name(), g.defeat_dialogue); 

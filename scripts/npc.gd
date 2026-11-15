@@ -1,5 +1,5 @@
 extends Sprite2D
-class_name LevelNPC
+class_name LevelEnemy
 
 @export var balls_lineup: Array[String] = ["verity"];
 @export var move_speed = 10
