@@ -24,9 +24,7 @@ func _ready() -> void:
 		print("hi")
 		self.skill.activate(baseDamage);  
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
 	
 func _on_health_changed(current: int, base: int): 
 	$HealthLabel.text = str(current) + "/" + str(base)
