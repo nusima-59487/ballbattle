@@ -84,7 +84,7 @@ tile_map_data = PackedByteArray("AADy//H/AAADAAQAAADx//H/AAAGAAIAAADw//H/AAAGAAI
 tile_set = ExtResource("1_oi3di")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=418340580]
-position = Vector2(1658, 1999)
+position = Vector2(2043, 2130)
 script = ExtResource("2_f2txt")
 
 [node name="cahr" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=2002706253]
@@ -125,12 +125,18 @@ position = Vector2(710, 554)
 balls_lineup = Array[String](["verity", "summon_knight"])
 
 [node name="Grunt" parent="." unique_id=1167607563 instance=ExtResource("4_0b4ue")]
-position = Vector2(687, 1215)
+position = Vector2(692, 1009)
 intro_dialogue = Array[String](["Hey! You there!", "You're no match for my ball battling ability!!"])
-defeat_dialogue = Array[String](["No way... my balls lost?!", "I need to run up north to tell admin jes about this..."])
+defeat_dialogue = Array[String](["No way... my balls lost?!", "I need to run up north to tell my boss about this..."])
 
 [node name="Villager" parent="." unique_id=1028140044 instance=ExtResource("6_1ainy")]
-position = Vector2(1449, 2060)
+position = Vector2(1723, 2014)
+display_name = "Villager"
+intro_dialogue = Array[String](["I saw a couple gangsters up north. ", "Maybe they'll tell you more about their cruel gang leader if you beat them. "])
+next_dialogue = Array[String]([])
+
+[node name="Villager2" parent="." unique_id=1848772023 instance=ExtResource("6_1ainy")]
+position = Vector2(2011, 2003)
 display_name = "Villager"
 intro_dialogue = Array[String](["Hey! You there!"])
-next_dialogue = Array[String](["I saw a couple gangsters up north.", "Maybe they'll tell you more about their cruel gang leader if you beat them.", "Click your ball on the bottom left to select them and click inside the arena to place them.", "when the bar on the top right is full press space to use the ball's ability.", "you only have one ball as of now the verity ball.", "you can get more balls by defeating specific enemies.", "good luck!"])
+next_dialogue = Array[String](["I have never met you before. You must be new to the Ball Kingdom. ", "Here, let me teach you the essentials to survive here. ", "In this kingdom, everyone owns special pets called balls, and they do the fighting for you.", "When you got in a battle, click your ball on the bottom left to select them and click inside the arena to place them.", "When the bar on the top left is full, press space to use the ball's ability.", "... You don't have any balls? Here, I can give you the Bijabilli ball. ", "you can get more balls by talking to other people.", "Good luck!"])

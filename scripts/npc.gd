@@ -1,5 +1,5 @@
 extends Sprite2D
-class_name LevelEnemy
+class_name LevelNPC
 
 @export var balls_lineup: Array[String] = ["verity"];
 @export var move_speed = 10
@@ -47,9 +47,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	await DialogueBox.show_dialogue(get_tree().current_scene, get_speaker_name(), intro_dialogue).finished
 
 	#self.target_position = body.position
-	var move = get_tree().create_tween()
-	move.set_trans(Tween.TRANS_CUBIC)
-	move.tween_property(self,"global_position", body.global_position - Vector2(0, -25), 1.0)
-	await move.finished
-	await DialogueBox.show_dialogue(get_tree().current_scene, get_speaker_name(), next_dialogue).finished
+	if !next_dialogue.is_empty(): 
+		var move = get_tree().create_tween()
+		move.set_trans(Tween.TRANS_CUBIC)
+		move.tween_property(self,"global_position", body.global_position - Vector2(0, -25), 1.0)
+		await move.finished
+		await DialogueBox.show_dialogue(get_tree().current_scene, get_speaker_name(), next_dialogue).finished
 	body.is_frozen = false
