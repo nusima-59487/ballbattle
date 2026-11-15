@@ -9,7 +9,7 @@ extends Node2D
 var can_spawn = false
 
 @onready var player_ball: Ball
-@onready var enemy_ball: Ball = $VerityBall
+@export var enemy_ball: Ball
 
 @onready var player_ult_bar: ProgressBar = $PlayerUltBar
 @onready var enemy_ult_bar: ProgressBar = $EnemyUltBar
@@ -18,6 +18,7 @@ var can_spawn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	enemy_ball.modulate = Color(1,0.5,0.5,1)
 	battleground.mouse_entered.connect(spawn)
 	battleground.mouse_exited.connect(exit)
 	#player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
@@ -32,9 +33,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_key_pressed(KEY_SPACE) and player_ball: 
-		player_ball.fire_ult()
-	print(can_spawn)
+	if Input.is_key_pressed(KEY_SPACE) and player_ball and enemy_ball: 
+		player_ball.fire_ult(enemy_ball)
+	if enemy_ball and player_ball:
+		enemy_ball.fire_ult(player_ball)
 	if can_spawn:
 		for i in range(0,len(player_slots)):
 			if player_slots[i].button_pressed == true and Input.is_action_just_pressed("click") and len(battleground.get_overlapping_bodies()) < 2:

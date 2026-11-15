@@ -1,6 +1,6 @@
 extends Skill
 
-
+@export var num: NumberPopup
 @onready var parent: Ball = $".."
 @onready var hitray: ShapeCast2D = $ShapeCast2D
 var result: Dictionary
@@ -25,6 +25,13 @@ func fire() -> void:
 	pass
 
 func ontouch(body: Node2D): 
-	if body is Ball and hitray.get_collider(0) is Ball: 
-		body.healthComponent.damage(basedmg); 
-		fired.emit()
+	if body is Ball:
+		for i in hitray.get_collision_count():
+			if hitray.get_collider(i) == body:
+				if body.vincibility:
+					num.visible = true
+					num.popup(str(basedmg))
+					parent.ult_gauge_percentage += absi(int(1.25*basedmg))
+				body.healthComponent.damage(basedmg, body.vincibility)
+				fired.emit()
+				return

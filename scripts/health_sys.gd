@@ -1,6 +1,7 @@
 extends Resource
 class_name HealthComponent
 
+
 @export var baseHealth: int = 100: 
 	set(value): 
 		health_changed.emit(health, value, 0)
@@ -14,14 +15,17 @@ class_name HealthComponent
 signal health_changed(current: int, base: int, delta: int); 
 signal died(); 
 
-func damage(damage_amount: int): 
-	health -= damage_amount; 
-	if health > 0: 
-		health_changed.emit(health, baseHealth, -damage_amount); 
-	else: 
-		died.emit(); 
+func damage(damage_amount: int, vincible:bool) -> void: 
+	if vincible:
+		health -= damage_amount; 
+		if health > 0: 
+			health_changed.emit(health, baseHealth, -damage_amount); 
+		else: 
+			died.emit(); 
+	else:
+		pass
 
-func heal(heal_amount: int): 
+func heal(heal_amount: int) -> void: 
 	health += heal_amount; 
 	if health > baseHealth: 
 		health = baseHealth

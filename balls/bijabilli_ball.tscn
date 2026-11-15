@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://donj2i1jrkbhp"]
 
-[ext_resource type="PackedScene" uid="uid://bbifnmfg1l65u" path="res://ball.tscn" id="1_v6cug"]
+[ext_resource type="PackedScene" uid="uid://bbifnmfg1l65u" path="res://scripts/ball.tscn" id="1_v6cug"]
 [ext_resource type="PackedScene" uid="uid://c8h2hfguf0oqy" path="res://skills/gun.tscn" id="2_fjemt"]
 [ext_resource type="Script" uid="uid://bom0pocgkgyic" path="res://scripts/health_sys.gd" id="2_i1oxy"]
 [ext_resource type="Texture2D" uid="uid://dq6uq2eapr7ct" path="res://assets/bijabilliC.png" id="3_i1oxy"]
 [ext_resource type="PackedScene" uid="uid://ckea26xkcx8ud" path="res://skills/contact.tscn" id="4_fjemt"]
+[ext_resource type="Script" uid="uid://8cqiw1wluvje" path="res://scripts/particle.gd" id="4_nbodi"]
+[ext_resource type="Script" uid="uid://yy30jkgks1sg" path="res://scripts/ults/bijabiliiult.gd" id="6_ye6el"]
 
 [sub_resource type="Resource" id="Resource_i1oxy"]
 script = ExtResource("2_i1oxy")
@@ -19,10 +21,24 @@ baseDamage = 5
 ballName = "Bijabilli"
 skill = NodePath("ContactSkill")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=2136672051]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="0" unique_id=1894552642]
+position = Vector2(0, -1)
+amount = 3
+texture = ExtResource("3_i1oxy")
+lifetime = 0.14
+scale_amount_min = 0.31
+scale_amount_max = 0.31
+color = Color(1, 1, 1, 0.31764707)
+script = ExtResource("4_nbodi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=2136672051]
 scale = Vector2(0.30468753, 0.30468753)
 texture = ExtResource("3_i1oxy")
 
-[node name="GunSkill" parent="." index="2" unique_id=563642783 instance=ExtResource("2_fjemt")]
+[node name="GunSkill" parent="." index="3" unique_id=563642783 instance=ExtResource("2_fjemt")]
 
-[node name="ContactSkill" parent="." index="3" unique_id=2086127598 instance=ExtResource("4_fjemt")]
+[node name="ContactSkill" parent="." index="4" unique_id=2086127598 node_paths=PackedStringArray("num") instance=ExtResource("4_fjemt")]
+num = NodePath("../Node2D")
+
+[node name="UltNode" parent="." index="6" unique_id=1371526384]
+script = ExtResource("6_ye6el")
