@@ -20,8 +20,8 @@ var can_spawn = false
 func _ready() -> void:
 	battleground.mouse_entered.connect(spawn)
 	battleground.mouse_exited.connect(exit)
-	player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
-	enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
+	#player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
+	#enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
 	for i in min(GameInstance.player_balls_lineup.size(), 3): 
 		var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
 		var img_texture = ImageTexture.create_from_image(img)
