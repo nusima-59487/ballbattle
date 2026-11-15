@@ -140,4 +140,11 @@ func _on_player_ball_die():
 	player_slots[current_player_ball_idx].texture_disabled = empty_img_texture
 	player_balls_left -= 1; 
 	if player_balls_left == 0: 
-		print("You lose boo")
+		# player ran out of balls, you lose
+		print("You blacked out!")
+		get_tree().paused = true
+		await get_tree().create_timer(0.5).timeout
+		await DialogueBox.show_dialogue(self, "", ["You blacked out!"], true).finished
+		get_tree().paused = false
+		# back to the map's starting point; the enemy stays for a rematch
+		get_tree().call_deferred("change_scene_to_file", "res://level.tscn")

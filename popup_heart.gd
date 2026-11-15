@@ -15,7 +15,7 @@ If you are going to spawn a lot, create a manager with a pool of numbers!
 
 
 func popup(damage: String, popup_direction: Vector2 = Vector2.ZERO) -> void:
-	global_position = ball.global_position - Vector2(30,30)
+	global_position = ball.global_position
 	modulate = ball.modulate
 	animation_player.play("pop")
 	await animation_player.animation_finished
