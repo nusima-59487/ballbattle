@@ -10,7 +10,7 @@
 script = ExtResource("2_jhcny")
 metadata/_custom_type_script = "uid://bom0pocgkgyic"
 
-[node name="VerityBall" unique_id=292186705 node_paths=PackedStringArray("skill") groups=["krill"] instance=ExtResource("1_isgj3")]
+[node name="KrillBallClone" unique_id=292186705 node_paths=PackedStringArray("skill") groups=["krill"] instance=ExtResource("1_isgj3")]
 mass = 0.1
 constant_torque = 2.0
 healthComponent = SubResource("Resource_lquwl")

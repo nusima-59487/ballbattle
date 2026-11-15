@@ -6,6 +6,8 @@ class_name HealthComponent
 	set(value): 
 		health_changed.emit(health, value, 0)
 		baseHealth = value
+		if health > baseHealth: 
+			health = baseHealth
 @export var health: int = 100: 
 	set(value): 
 		if value < 0: died.emit()

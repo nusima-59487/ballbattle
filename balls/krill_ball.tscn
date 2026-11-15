@@ -9,18 +9,18 @@
 
 [sub_resource type="Resource" id="Resource_lquwl"]
 script = ExtResource("2_r72ll")
-baseHealth = 90
-health = 90
+baseHealth = 150
+health = 150
 metadata/_custom_type_script = "uid://bom0pocgkgyic"
 
-[node name="VerityBall" unique_id=292186705 node_paths=PackedStringArray("skill") groups=["krill"] instance=ExtResource("1_ach4g")]
+[node name="KrillBall" unique_id=292186705 node_paths=PackedStringArray("skill") groups=["krill"] instance=ExtResource("1_ach4g")]
 mass = 0.1
 constant_torque = 2.0
 healthComponent = SubResource("Resource_lquwl")
 speed = 120
 angularVelocity = 5
 baseDamage = 3
-ballName = "krill"
+ballName = "Krill"
 skill = NodePath("Contact")
 
 [node name="Contact" parent="." index="1" unique_id=2086127598 node_paths=PackedStringArray("num") groups=["krill"] instance=ExtResource("3_3ucff")]

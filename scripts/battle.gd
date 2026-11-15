@@ -3,13 +3,20 @@ extends Node2D
 @onready var player_slot_1: TextureButton = $PlayerSlot1
 @onready var player_slot_2: TextureButton = $PlayerSlot2
 @onready var player_slot_3: TextureButton = $PlayerSlot3
+@onready var enemy_slot_1: Sprite2D = $EnemySlot1
+@onready var enemy_slot_2: Sprite2D = $EnemySlot2
+@onready var enemy_slot_3: Sprite2D = $EnemySlot3
+
+var current_enemy_ball_idx = 0; 
 
 @onready var player_slots: Array[TextureButton] = [player_slot_1, player_slot_2, player_slot_3]
+@onready var enemy_slots: Array[Sprite2D] = [enemy_slot_1, enemy_slot_2, enemy_slot_3]
+
 @onready var battleground: Area2D = $Area2D
 var can_spawn = false
 
 @onready var player_ball: Ball
-@export var enemy_ball: Ball
+@onready var enemy_ball: Ball
 
 @onready var player_ult_bar: ProgressBar = $PlayerUltBar
 @onready var enemy_ult_bar: ProgressBar = $EnemyUltBar
@@ -18,13 +25,8 @@ var can_spawn = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	enemy_ball.find_child("HealthLabel").modulate = Color(1.0, 0.188, 0.188, 1.0)
-	var damage_label := enemy_ball.find_child("Node2D").find_child("Label") as Label
-	damage_label.modulate = Color(1.0, 0.188, 0.188, 1.0)
 	battleground.mouse_entered.connect(spawn)
 	battleground.mouse_exited.connect(exit)
-	#player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
-	enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
 	for i in min(GameInstance.player_balls_lineup.size(), 3): 
 		var img = Image.load_from_file("res://assets/" + GameInstance.player_balls_lineup[i] + ".png")
 		var img_texture = ImageTexture.create_from_image(img)
@@ -32,6 +34,27 @@ func _ready() -> void:
 		var img_texture1 = ImageTexture.create_from_image(img1)
 		player_slots[i].texture_hover = img_texture1
 		player_slots[i].texture_normal = img_texture
+	for i in min(GameInstance.current_enemy_balls.size(), 3): 
+		var img = Image.load_from_file("res://assets/" + GameInstance.current_enemy_balls[i] + ".png")
+		var img_texture = ImageTexture.create_from_image(img)
+		enemy_slots[i].texture = img_texture
+		
+	current_enemy_ball_idx = 0; 
+	spawn_enemy_ball(current_enemy_ball_idx); 
+	
+
+func spawn_enemy_ball(idx: int): 
+	var enemy_ball_tscn = load("res://balls/" + GameInstance.current_enemy_balls[0] + "_ball.tscn");
+	enemy_ball = enemy_ball_tscn.instantiate();
+	var spawn_position = Vector2.ZERO;
+	enemy_ball.healthComponent = enemy_ball.healthComponent.duplicate_deep(Resource.DEEP_DUPLICATE_ALL)
+	enemy_ball.position = spawn_position;
+	enemy_ball.find_child("HealthLabel").modulate = Color(1.0, 0.188, 0.188, 1.0)
+	var damage_label := enemy_ball.find_child("Node2D").find_child("Label") as Label
+	damage_label.modulate = Color(1.0, 0.188, 0.188, 1.0)
+	add_child(enemy_ball)
+	enemy_ball.ult_gauge_percentage_update.connect(_on_enemy_ult_bar_change); 
+	enemy_ball.die.connect(_on_enemy_ball_die)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,6 +77,7 @@ func _process(delta: float) -> void:
 					player_ball.position = spawn_position;
 					add_child(player_ball)
 					player_ball.ult_gauge_percentage_update.connect(_on_player_ult_bar_change); 
+					player_ball.die.connect(_on_player_ball_die)
 		
 
 func spawn() -> void:
@@ -82,3 +106,24 @@ func _on_player_ult_bar_change(new_percentage: int):
 	player_ult_bar.value = new_percentage
 func _on_enemy_ult_bar_change(new_percentage: int): 
 	enemy_ult_bar.value = new_percentage
+
+func _on_enemy_ball_die(): 
+	current_enemy_ball_idx += 1; 
+	if current_enemy_ball_idx >= GameInstance.current_enemy_balls.size(): 
+		# enemy ran out of balls, you win
+		print("You win!")
+		var mapscene: Node2D = load("res://level.tscn").instantiate(); 
+		var e = mapscene.find_child(GameInstance.last_battle_enemy_opponent, false)
+		if e: 
+			e.queue_free(); 
+		
+		var player: CharacterBody2D = mapscene.find_child("CharacterBody2D", false)
+		player.position = GameInstance.player_map_pos; 
+		
+		get_tree().call_deferred("change_scene_to_node", mapscene)
+	else: 
+		spawn_enemy_ball(current_enemy_ball_idx)
+
+func _on_player_ball_die(): 
+	#var 
+	pass

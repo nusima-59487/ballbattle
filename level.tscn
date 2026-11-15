@@ -1,35 +1,10 @@
 [gd_scene format=4 uid="uid://d3pgwr84kii8m"]
 
 [ext_resource type="TileSet" uid="uid://cihl1uas8no1w" path="res://assets/map/new_tile_set.tres" id="1_oi3di"]
+[ext_resource type="Script" uid="uid://dosk2eix8l2me" path="res://scripts/levelplayer.gd" id="2_f2txt"]
 [ext_resource type="Texture2D" uid="uid://b5dx37o1u6jck" path="res://assets/map/player.png" id="2_oi3di"]
 [ext_resource type="Texture2D" uid="uid://dq6uq2eapr7ct" path="res://assets/bijabilliC.png" id="3_oi3di"]
-
-[sub_resource type="GDScript" id="GDScript_i1io4"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
-
-func _physics_process(delta: float) -> void:
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var directionx := Input.get_axis(\"ui_left\", \"ui_right\")
-	if directionx:
-		velocity.x = directionx * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	var directiony := Input.get_axis(\"ui_up\", \"ui_down\")
-	if directiony:
-		velocity.y = directiony * SPEED
-	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
-
-	move_and_slide()
-"
+[ext_resource type="PackedScene" uid="uid://df21n6el8bq06" path="res://enemy.tscn" id="4_0b4ue"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0b4ue"]
 atlas = ExtResource("2_oi3di")
@@ -105,7 +80,7 @@ tile_set = ExtResource("1_oi3di")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=418340580]
 position = Vector2(-773, -835)
-script = SubResource("GDScript_i1io4")
+script = ExtResource("2_f2txt")
 
 [node name="cahr" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=2002706253]
 scale = Vector2(2, 2)
@@ -143,3 +118,6 @@ color = Color(0.24100673, 0.13142532, 0.21909043, 0.36862746)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1234466793]
 polygon = PackedVector2Array(-2956, -3619, -2222, -3648, -2117, -2942, -1583, -2847, -1421, -2265, -1001, -2284, -839, -2189, -858, -1960, -858, -1741, -839, -1627, -792, -1531, -677, -1522, -382, -1493, -181, -1503, -19, -1445, 66, -1493, 162, -1398, 143, -1226, 219, -921, 133, -788, 133, -664, 372, -683, 362, -654, 619, -673, 801, -721, 1134, -664, 1487, -702, 1621, -673, 1497, -606, 1497, -406, 1487, -263, 1516, -139, 1458, -63, 1449, 32, 1439, 147, 1468, 414, 1535, 852, 1678, 852, 1764, 814, 1592, 967, 1621, 1100, 1783, 1148, 2202, 1281, 2193, 1587, 2145, 2073, 2164, 2197, 1811, 2340, 1516, 2359, 1068, 2349, 543, 2321, 219, 2044, 105, 1939, 86, 1691, 133, 1081, 105, 824, -239, 633, -639, 395, -801, 99, -916, -177, -1373, -282, -1602, -473, -1650, -940, -1707, -1121, -1850, -1331, -2146, -1426, -2117, -1798, -2126, -2056, -2289, -2141, -2575, -2094, -2718, -2227, -2756, -2494, -2918, -2504, -3051, -2761, -2966, -2923, -3023, -3343, -2966, -3533, -2956, -3648, -3194, -3743, -3728, -2304, -1411, 2416, 3146, 2740, 3480, -416, 209, -2818, -2527, -4344, -3557, -3972)
+
+[node name="Enemy" parent="." unique_id=544133219 instance=ExtResource("4_0b4ue")]
+position = Vector2(439, 146)

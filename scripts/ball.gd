@@ -10,9 +10,13 @@ class_name Ball
 @export var skill: Skill; 
 @export var additional_skill: Skill;
 
+var is_dead = false; 
+
 var vincibility = true
 
 signal ult_gauge_percentage_update(percentage: int)
+signal die(); 
+
 var ult_gauge_percentage: int = 0: 
 	set(value): 
 		ult_gauge_percentage = clampi(value, 0, 100); 
@@ -48,7 +52,10 @@ func _on_health_changed(current: int, base: int, delta: int):
 	$HealthLabel.text = str(current) + "/" + str(base)
 	
 func _on_died(): 
-	queue_free(); 
+	if not is_dead: 
+		is_dead = true
+		die.emit()
+		queue_free(); 
 func _on_skill_fired(): 
 	pass
 	
