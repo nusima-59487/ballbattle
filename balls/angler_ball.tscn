@@ -23,7 +23,7 @@ size = Vector2(20, 22)
 
 [node name="Ball" unique_id=292186705 node_paths=PackedStringArray("skill", "additional_skill") instance=ExtResource("1_st0f3")]
 healthComponent = SubResource("Resource_xwob1")
-speed = 90
+speed = 270
 angularVelocity = 4
 baseDamage = 4
 ballName = "angler"

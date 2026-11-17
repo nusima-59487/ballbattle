@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://bom0pocgkgyic"
 [node name="VerityBall" unique_id=292186705 node_paths=PackedStringArray("skill") instance=ExtResource("1_1bh7k")]
 mass = 0.5
 healthComponent = SubResource("Resource_lquwl")
-speed = 120
+speed = 360
 initialAngle = 234.0
 angularVelocity = 1
 baseDamage = 4
